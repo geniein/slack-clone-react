@@ -7,6 +7,7 @@ const cors = require("cors");
 const passport = require("passport");
 
 dotenv.config();
+const passportConfig = require("./passport");
 
 const app = express();
 app.set("PORT", process.env.PORT || 3055);
@@ -14,3 +15,4 @@ app.set("PORT", process.env.PORT || 3055);
 const server = app.listen(app.get("PORT"), () => {
     console.log(`listening on port ${app.get("PORT")}`);
 });
+passportConfig();
