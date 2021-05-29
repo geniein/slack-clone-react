@@ -75,7 +75,7 @@ const config: webpack.Configuration = {
     publicPath: '/dist/',
     proxy: {
       '/api/': {
-        target: 'http://localhost:3035',
+        target: 'http://localhost:3055',
         changeOrigin: true,
       },
     },

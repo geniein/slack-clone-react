@@ -7,7 +7,7 @@ import useInput from '@hooks/useInput';
 import axios from 'axios';
 
 const LogIn = () => {
-    const {data, error, revalidate, mutate} = useSWR('http://localhost:3055/api/users', fetcher);
+    const {data, error, revalidate, mutate} = useSWR('/api/users', fetcher);
     const [email, onChangeEmail] =useInput('');
     const [password, onChangePassword] =useInput('');
     const [logInError, setLogInError] = useState(false);        
@@ -25,8 +25,8 @@ const LogIn = () => {
         )
         .then((response) => {
           console.log(response.data);
-          //revalidate(); //Reload --> call useSWR AGAIN
-          mutate(response.data, false) //immediately --> Optimistic UI
+          revalidate(); //Reload --> call useSWR AGAIN
+          // mutate(response.data, false) //immediately --> Optimistic UI
         })
         .catch((error) => {
           setLogInError(error.response?.data?.statusCode === 401);
@@ -38,7 +38,8 @@ const LogIn = () => {
     }
 
     if(data) {
-      return <Redirect to="/workspace/channel"/>
+      console.log('login : '+JSON.stringify(data));      
+      return <Redirect to="/workspace/sleact/channel/general"/>
     }
 
    return (
