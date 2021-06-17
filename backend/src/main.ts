@@ -30,5 +30,3 @@ async function bootstrap() {
     
 }
 bootstrap();
-
- 
