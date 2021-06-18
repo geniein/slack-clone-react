@@ -8,6 +8,6 @@ export class AppService {
 
   postUser(): string {
     // const user = await User.postUser();
-    return "abc";
+    return "";
   }
 }
